@@ -1,0 +1,23 @@
+{
+  "name": "signup-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	 "create-database": "psql -U postgres -h localhost -f sql/create-database.sql",
+    "create-tables": "psql -U postgres -h localhost -d mcoffee -f sql/create-tables.sql",
+    "seed-tables": "psql -U postgres -h localhost -d mcoffee -f sql/seed-tables.sql",
+	 "dev": "nodemon -r dotenv/config index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "pg-promise": "^10.11.0"
+  }
+}
