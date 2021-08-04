@@ -1,9 +1,11 @@
 const express = require("express")
 const router = express.Router()
 
-router.get("/", (req, res) => {
+const { redirectToLogin } = require("../middleware")
+
+router.get("/", redirectToLogin, (req, res) => {
 	res.render("pages/home", {
-		firstname: req.query.firstname,
+		firstname: req.session.firstname,
 	})
 })
 

@@ -8,7 +8,9 @@ const saltRounds = 5
 // DB setup
 const db = require("../database")
 
-router.get("/", (req, res) => {
+const { redirectToHome } = require("../middleware")
+
+router.get("/", redirectToHome, (req, res) => {
 	res.render("pages/signup", {
 		message: req.query.message,
 	})
@@ -33,7 +35,7 @@ router.post("/", (req, res) => {
 				[req.body.firstname, req.body.lastname, req.body.email, encPassword]
 			)
 				.then(() => {
-					res.redirect(`/home?firstname=${req.body.firstname}`)
+					res.redirect("/login")
 				})
 				.catch((err) => {
 					res.redirect(`/signup?message=${err}`)
